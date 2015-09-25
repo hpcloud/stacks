@@ -18,4 +18,6 @@ RUN useradd -mU -s /bin/bash vcap
 # /app must exist so we can bind-mount it to /home/vcap in seed
 RUN mkdir /app
 
+RUN cp /tmp/assets/etc/timezone /etc/timezone
+
 RUN rm -rf /tmp/*
