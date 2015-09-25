@@ -1,5 +1,7 @@
 FROM ubuntu:trusty
 
+ADD stackon.json /
+
 ADD build /tmp/build
 ADD assets /tmp/assets
 
