@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+os=${1:-}
+
+if [[ -z "$os" || -z "${2:-}" ]]
+then
+  echo "usage: $0 ubuntu package <package2...N>"
+  exit 1
+fi
+
+if [[ "ubuntu" == "$os" ]]
+then
+  DEBIAN_FRONTEND=noninteractive /usr/bin/apt-get -y install -- "${@:2}"
+fi

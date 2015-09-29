@@ -1,6 +1,10 @@
 FROM ubuntu:trusty
 
 ADD stackon.json /
+ADD regenerate-timezone-data \
+    stack-add-repo stack-install-package stack-update-repos \
+    /usr/local/bin/
+
 
 ADD build /tmp/build
 ADD assets /tmp/assets
@@ -21,3 +25,5 @@ RUN mkdir /app
 RUN cp /tmp/assets/etc/timezone /etc/timezone
 
 RUN rm -rf /tmp/*
+
+CMD ["/start.sh"]

@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+for i in "$@";
+do
+  if [[ $i == 'ubuntu' ]];
+  then
+    /usr/bin/apt-get -y update
+  fi
+done
+
