@@ -1,10 +1,11 @@
 FROM ubuntu:trusty
 
-ADD stackon.json /
+ADD start.sh stackon.json /
 ADD regenerate-timezone-data \
     stack-add-repo stack-install-package stack-update-repos \
     /usr/local/bin/
 
+RUN mkdir -p /var/run/sshd && chmod 0755 /var/run/sshd
 
 ADD build /tmp/build
 ADD assets /tmp/assets
