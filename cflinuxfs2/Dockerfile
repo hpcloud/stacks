@@ -1,5 +1,8 @@
 FROM ubuntu:trusty
 
+# expose ssh
+EXPOSE 22
+
 ADD start.sh stackon.json /
 ADD regenerate-timezone-data \
     stack-add-repo stack-install-package stack-update-repos \
