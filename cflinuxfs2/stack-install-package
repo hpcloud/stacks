@@ -10,6 +10,24 @@ then
   exit 1
 fi
 
+# Skip if allow_sudo is enabled
+if ! grep -q '^stackato ALL= NOPASSWD: ALL' /etc/sudoers; then
+  for i in "${@:2}"
+  do
+    # Check if package name ends with '-', this means package removal in apt-get
+    if [[ "$i" == *- ]] ; then
+      echo "Package removal requires allow_sudo"
+      exit 2
+    fi
+
+    # Don't allow installing older, potentially vulnerable packages
+    if [[ "${i/=}" != "$i" ]] ; then
+      echo "Installing specific versions requires allow_sudo access"
+      exit 3
+    fi
+  done
+fi
+
 if [[ "ubuntu" == "$os" ]]
 then
   DEBIAN_FRONTEND=noninteractive /usr/bin/apt-get -y install -- "${@:2}"
