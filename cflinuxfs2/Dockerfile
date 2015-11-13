@@ -10,7 +10,7 @@ ADD regenerate-timezone-data \
 
 RUN mkdir -p /var/run/sshd && chmod 0755 /var/run/sshd
 
-ENV HCF_LOG_FILES stdout=/home/stackato/logs/stdout.log:stderr=/home/stackato/logs/stderr.log
+ENV STACKATO_LOG_FILES stdout=/home/stackato/logs/stdout.log:stderr=/home/stackato/logs/stderr.log
 
 ADD build /tmp/build
 ADD assets /tmp/assets
