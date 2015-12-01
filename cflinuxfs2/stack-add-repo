@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+os=${1:-}
+repo=${2:-}
+
+if [[ -z "$os" || -z "$repo" ]]
+then
+  echo "usage: $0 ubuntu repo"
+  exit 1
+fi
+
+if [[ "ubuntu" == "$os" ]]
+then
+  /usr/bin/add-apt-repository "$repo"
+fi

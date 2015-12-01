@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# /etc/timezone has been changed, so /etc/localtime needs to be regenerated
+dpkg-reconfigure --frontend noninteractive tzdata
